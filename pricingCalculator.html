@@ -241,31 +241,6 @@
     setQty();
   };
 
-  // On load, calculate plants & pots prices
-  setPlantePrice();
-  setPotPrice();
-
-  $('input:radio[name=selectedOffer]').change(function() {
-    setPlantePrice();
-    if (this.value == 'achat') {
-      $('#coutLoc').hide();
-      $('#coutEnt').hide();
-    }
-    else if (this.value == 'achatEntretien') {
-      $('#coutLoc').hide();
-      $('#coutEnt').show();
-    }
-    else if (this.value == 'location') {
-      $('#coutLoc').show();
-      $('#coutEnt').show();
-    }
-    setQty();
-  });
-
-  $('input:radio[name=selectedPots]').change(function() {
-    setPotPrice();
-  });
-
   const setQty = () => {
     let currentTotalQty = 0;
     $('[name="quantity"]').each((index, el) => {
@@ -292,7 +267,32 @@
     });
 
     $("#totalPlantePrice").text(total);
-  }
+  };
+
+  // On load, calculate plants & pots prices
+  setPlantePrice();
+  setPotPrice();
+
+  $('input:radio[name=selectedOffer]').change(function() {
+    setPlantePrice();
+    if (this.value == 'achat') {
+      $('#coutLoc').hide();
+      $('#coutEnt').hide();
+    }
+    else if (this.value == 'achatEntretien') {
+      $('#coutLoc').hide();
+      $('#coutEnt').show();
+    }
+    else if (this.value == 'location') {
+      $('#coutLoc').show();
+      $('#coutEnt').show();
+    }
+    setQty();
+  });
+
+  $('input:radio[name=selectedPots]').change(function() {
+    setPotPrice();
+  });
 
   $('.changeQty').on("click", () => {
     setTimeout(() => {
