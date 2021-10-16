@@ -73,7 +73,7 @@
                 <input type="button" value="-" class="minus" />
                 <input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
                 <input type="button" value="+" class="plus">
-              </div></div>
+              </div>
             </div>
             
             <h5> Plante Tombante (100-150cm) : </h5>
@@ -84,7 +84,6 @@
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
               </div>
             </div>
-            </div>
             
             <h5> Daddy Plant (100-150cm) : </h5>
             <div class="plantsRow">
@@ -94,7 +93,6 @@
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
               </div>
             </div>
-            </div>
             
             <h5>Giant plant (+150cm) :</h5>
             <div class="plantsRow">
@@ -103,7 +101,6 @@
               <div class="inputRow"><label for="giantPlanteQty"> Quantité :</label><div class="quantity buttons_added">
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -249,15 +246,15 @@
 
     $('input:radio[name=selectedOffer]').change(function() {
       setPlantePrice();
-      if (this.value == 'Achat') {
+      if (this.value == 'achat') {
         $('#coutLoc').hide();
         $('#coutEnt').hide();
       }
-      else if (this.value == 'AchatEtEntretien') {
+      else if (this.value == 'achatEntretien') {
         $('#coutLoc').hide();
         $('#coutEnt').show();
       }
-      else {
+      else if (this.value == 'location') {
         $('#coutLoc').show();
         $('#coutEnt').show();
       }
