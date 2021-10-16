@@ -108,8 +108,8 @@
       <div class="right-boxes" style="width: 50%; padding-top: 60px; position: sticky;">
         <div class="total-numbers">
           <div style="display: flex; align-items: center; flex-direction: row;margin-bottom: 10px;">
-            <label for="totalPlanteQty"> Nombre de plantes :</label>
-            <span id="totalPlanteQty" style="padding-bottom: 5px;">0</span>
+            <label for="totalPlanteQty"> Nombre de plantes : <span id="totalPlanteQty" style="padding-bottom: 5px;">0</span></label>
+            
             <!-- <input type="number" disabled id="totalPlanteQty" style="padding-bottom: 5px;"> -->
           </div>
           <div id="coutPlantes" style="display:flex;flex-direction: row; align-items: center; margin-bottom: 10px;">
@@ -151,7 +151,7 @@
               <input type="text"  id="phonenumber" name='phonenumber'/>
             </div>
           </div>
-          <button class="button-56" role="button" onclick="calculateTotal()"> Envoyer </button>
+          <button class="button-56" role="button" onclick=""> Envoyer </button>
         </div>
       </div>
     </form>
@@ -272,14 +272,14 @@
       currentTotalQty += parseInt($(el).val())
     });
     console.log('currentTotalQty', currentTotalQty);
-    $("#totalPlanteQty").val(currentTotalQty);
+    $("#totalPlanteQty").text(currentTotalQty);
   }
 
-  $('.changeQty').change(() => {
+  $('.changeQty').click(() => {
     setQty();
   });
 
-  $('[name="quantity"]').change(() => {
+  $('[name="quantity"]').on("input", () => {
     setQty();
   });
 
