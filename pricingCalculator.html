@@ -60,7 +60,7 @@
                 <input type="button" value="-" class="minus">
                 <input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
                 <input type="button" value="+" class="plus">
-              </div>
+              </div><input type="hidden" class="inputQty" id="babyPlanteQty" name="babyPlante" required  minlength="1" maxlength="8" oninput="plantesPriceT()"></div>
             </div>
             
             <h5> Teenage Plante (50-100cm) : </h5>
@@ -73,7 +73,7 @@
                 <input type="button" value="-" class="minus" />
                 <input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
                 <input type="button" value="+" class="plus">
-              </div>
+              </div></div>
             </div>
             
             <h5> Plante Tombante (100-150cm) : </h5>
@@ -82,7 +82,7 @@
               <div class="inputRow"><label for="plante-tombante">Prix Pot :</label><input class="inputUPots" disabled id="tombantePlantePots"></div>
               <div class="inputRow"><label for="tombantePlanteQty">Quantité :</label><div class="quantity buttons_added">
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-              </div>
+              </div><input type="hidden" class="inputQty" id="tombantePlanteQty" name="tombantePlante" required minlength="1" oninput="plantesPriceT()"></div>
             </div>
             
             <h5> Daddy Plant (100-150cm) : </h5>
@@ -91,7 +91,7 @@
               <div class="inputRow"><label for="daddy-plant"> Prix Pot :</label><input class="inputUPots" disabled id="daddyPlantePots"></div>
               <div class="inputRow"><label for="daddyPlanteQty">Quantité :</label><div class="quantity buttons_added">
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-              </div>
+              </div><input type="hidden" class="inputQty" id="daddyPlanteQty" name="daddyPlante" required minlength="1" oninput="plantesPriceT()"></div>
             </div>
             
             <h5>Giant plant (+150cm) :</h5>
@@ -100,7 +100,7 @@
               <div class="inputRow"><label for="giant-plant"> Prix Pot :</label><input class="inputUPots" disabled id="giantPlantePots" name="giantPlant"></div>
               <div class="inputRow"><label for="giantPlanteQty"> Quantité :</label><div class="quantity buttons_added">
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-              </div>
+              </div><input type="hidden" class="inputQty" id="giantPlanteQty" name="giantPlant" required minlength="1" maxlength="8" oninput="plantesPriceT()"></div>
             </div>
           </div>
         </div>
@@ -117,8 +117,8 @@
             <label for="coutEntretienT"> Cout entretien par mois : </label><input type="number" disabled id="coutEntretienT" style="padding-bottom: 5px;">
           </div>
           
-          <div id="coutLoc" style="display:none; flex-direction: row; align-items: center;margin-bottom: 10px; margin-top: 10px">
-            <label for="coutLocationT"> Cout location par mois : </label><input type="number" disabled id="coutLocationT" style="padding-bottom: 5px;">
+          <div id="coutLoc" style="display:flex; flex-direction: row; align-items: center;margin-bottom: 10px; margin-top: 10px">
+            <label for="coutLocationT"> Cout location par mois (si location) : </label><input type="number" disabled id="coutLocationT" style="padding-bottom: 5px;">
           </div>
           
           
@@ -162,108 +162,108 @@
   
   // Choix Offres => prix plantesU
   $(document).ready(function() {
-    const plantePrices = {
-      babyPlante: {
-        achat: 8,
-        achatEntretien: 8,
-        location: 1,
-      },
-      teenagePlante: {
-        achat: 30,
-        achatEntretien: 30,
-        location: 3,
-      },
-      tombantePlante: {
-        achat: 35,
-        achatEntretien: 35,
-        location: 4,
-      },
-      daddyPlante: {
-        achat: 60,
-        achatEntretien: 60,
-        location: 5,
-      },
-      giantPlante: {
-        achat: 120,
-        achatEntretien: 120,
-        location: 12,
-      },
-    };
+  const plantePrices = {
+    babyPlante: {
+      achat: 8,
+      achatEntretien: 8,
+      location: 1,
+    },
+    teenagePlante: {
+      achat: 30,
+      achatEntretien: 30,
+      location: 3,
+    },
+    tombantePlante: {
+      achat: 35,
+      achatEntretien: 35,
+      location: 4,
+    },
+    daddyPlante: {
+      achat: 60,
+      achatEntretien: 60,
+      location: 5,
+    },
+    giantPlante: {
+      achat: 120,
+      achatEntretien: 120,
+      location: 12,
+    },
+  };
 
-    const potPrices = {
-      babyPlante: {
-        cuit: 6,
-        eco: 25,
-      },
-      teenagePlante: {
-        cuit: 18,
-        eco: 25,
-      },
-      tombantePlante: {
-        cuit: 18,
-        eco: 25,
-      },
-      daddyPlante: {
-        cuit: 32,
-        eco: 39,
-      },
-      giantPlante: {
-        cuit: 69,
-        eco: 83,
-      },
-    };
+  const potPrices = {
+    babyPlante: {
+      cuit: 6,
+      eco: 25,
+    },
+    teenagePlante: {
+      cuit: 18,
+      eco: 25,
+    },
+    tombantePlante: {
+      cuit: 18,
+      eco: 25,
+    },
+    daddyPlante: {
+      cuit: 32,
+      eco: 39,
+    },
+    giantPlante: {
+      cuit: 69,
+      eco: 83,
+    },
+  };
 
-    const plantUnity = [
-      "babyPlante",
-      "teenagePlante",
-      "tombantePlante",
-      "daddyPlante",
-      "giantPlante",
-    ];
+  const plantUnity = [
+    "babyPlante",
+    "teenagePlante",
+    "tombantePlante",
+    "daddyPlante",
+    "giantPlante",
+  ];
 
-    const setPlantePrice = () => {
-      const selectedOffer = $('input[name=selectedOffer]:checked', '#pricingPlantes').val();
-      plantUnity.forEach(plant => {
-        $(`#${plant}U`).val(
-          plantePrices[`${plant}`][selectedOffer]
-        );
-      })
-    };
+  const setPlantePrice = () => {
+    const selectedOffer = $('input[name=selectedOffer]:checked', '#pricingPlantes').val();
+    plantUnity.forEach(plant => {
+      $(`#${plant}U`).val(
+        plantePrices[`${plant}`][selectedOffer]
+      );
+    })
+  };
 
-    const setPotPrice = () => {
-      const selectedPot = $('input[name=selectedPots]:checked', '#pricingPlantes').val();
-      console.log('selectedPot', selectedPot);
-      plantUnity.forEach(plant => {
-        $(`#${plant}Pots`).val(
-          potPrices[`${plant}`][selectedPot]
-        );
-      })
-    };
+  const setPotPrice = () => {
+    const selectedPot = $('input[name=selectedPots]:checked', '#pricingPlantes').val();
+    console.log('selectedPot', selectedPot);
+    plantUnity.forEach(plant => {
+      $(`#${plant}Pots`).val(
+        potPrices[`${plant}`][selectedPot]
+      );
+    })
+  };
 
-    // On load, calculate plants & pots prices
+  // On load, calculate plants & pots prices
+  setPlantePrice();
+  setPotPrice();
+
+  $('input:radio[name=selectedOffer]').change(function() {
     setPlantePrice();
-    setPotPrice();
-
-    $('input:radio[name=selectedOffer]').change(function() {
-      setPlantePrice();
-      if (this.value == 'achat') {
-        $('#coutLoc').hide();
-        $('#coutEnt').hide();
-      }
-      else if (this.value == 'achatEntretien') {
-        $('#coutLoc').hide();
-        $('#coutEnt').show();
-      }
-      else if (this.value == 'location') {
-        $('#coutLoc').show();
-        $('#coutEnt').show();
-      }
-    });
-
-    $('input:radio[name=selectedPots]').change(function() {
-      setPotPrice();
-    });
+    if (this.value == 'achat') {
+      $('#coutLoc').hide();
+      $('#coutEnt').hide();
+    }
+    else if (this.value == 'achatEntretien') {
+      $('#coutLoc').hide();
+      $('#coutEnt').show();
+    }
+    else if (this.value == 'location') {
+      $('#coutLoc').show();
+      $('#coutEnt').show();
+    }
   });
+
+  $('input:radio[name=selectedPots]').change(function() {
+    setPotPrice();
+  });
+});
   
   
   // Calcul CoutTotal
