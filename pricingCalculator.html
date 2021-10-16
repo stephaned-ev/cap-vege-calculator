@@ -57,16 +57,22 @@
               <div class="inputRow"><label for="babyPlanteU">Prix/U :</label><input class="inputUPots" disabled id="babyPlanteU"></div>
               <div class="inputRow"><label for="babyPlantePots">Prix Pot :</label><input class="inputUPots" disabled id="babyPlantePots"></div>
               <div class="inputRow"><label for="babyPlanteQty">Quantité :</label><div class="quantity buttons_added">
-                <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-              </div><input type="number" class="inputQty" id="babyPlanteQty" name="babyPlante" required  minlength="1" maxlength="8" oninput="plantesPriceT()"></div>
+                <input type="button" value="-" class="minus">
+                <input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
+                <input type="button" value="+" class="plus">
+              </div>
             </div>
             
             <h5> Teenage Plante (50-100cm) : </h5>
             <div  class="plantsRow">
               <div class="inputRow"><label for="teenagePlantU">Prix/U :</label><input class="inputUPots" disabled id="teenagePlanteU"></div>
               <div class="inputRow"><label for="teenagePlantesPots">Prix Pot :</label><input class="inputUPots" disabled id="teenagePlantePots"></div>
-              <div class="inputRow"><label for="teenagePlanteQty"> Quantité :</label><div class="quantity buttons_added">
-                <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
+              <div class="inputRow">
+                <label for="teenagePlanteQty"> Quantité :</label>
+              <div class="quantity buttons_added">
+                <input type="button" value="-" class="minus" />
+                <input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode="">
+                <input type="button" value="+" class="plus">
               </div></div>
             </div>
             
@@ -76,7 +82,8 @@
               <div class="inputRow"><label for="plante-tombante">Prix Pot :</label><input class="inputUPots" disabled id="tombantePlantePots"></div>
               <div class="inputRow"><label for="tombantePlanteQty">Quantité :</label><div class="quantity buttons_added">
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-              </div><input type="number" class="inputQty" id="tombantePlanteQty" name="tombantePlante" required minlength="1" oninput="plantesPriceT()"></div>
+              </div>
+            </div>
             </div>
             
             <h5> Daddy Plant (100-150cm) : </h5>
@@ -85,7 +92,8 @@
               <div class="inputRow"><label for="daddy-plant"> Prix Pot :</label><input class="inputUPots" disabled id="daddyPlantePots"></div>
               <div class="inputRow"><label for="daddyPlanteQty">Quantité :</label><div class="quantity buttons_added">
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-              </div><input type="number" class="inputQty" id="daddyPlanteQty" name="daddyPlante" required minlength="1" oninput="plantesPriceT()"></div>
+              </div>
+            </div>
             </div>
             
             <h5>Giant plant (+150cm) :</h5>
@@ -94,7 +102,8 @@
               <div class="inputRow"><label for="giant-plant"> Prix Pot :</label><input class="inputUPots" disabled id="giantPlantePots" name="giantPlant"></div>
               <div class="inputRow"><label for="giantPlanteQty"> Quantité :</label><div class="quantity buttons_added">
                 <input type="button" value="-" class="minus"><input type="number" step="1" min="0" max="" name="quantity" value="0" title="Qty" class="input-text qty text" size="4" pattern="" inputmode=""><input type="button" value="+" class="plus">
-              </div><input type="number" class="inputQty" id="giantPlanteQty" name="giantPlant" required minlength="1" maxlength="8" oninput="plantesPriceT()"></div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -111,8 +120,8 @@
             <label for="coutEntretienT"> Cout entretien par mois : </label><input type="number" disabled id="coutEntretienT" style="padding-bottom: 5px;">
           </div>
           
-          <div id="coutLoc" style="display:flex; flex-direction: row; align-items: center;margin-bottom: 10px; margin-top: 10px">
-            <label for="coutLocationT"> Cout location par mois (si location) : </label><input type="number" disabled id="coutLocationT" style="padding-bottom: 5px;">
+          <div id="coutLoc" style="display:none; flex-direction: row; align-items: center;margin-bottom: 10px; margin-top: 10px">
+            <label for="coutLocationT"> Cout location par mois : </label><input type="number" disabled id="coutLocationT" style="padding-bottom: 5px;">
           </div>
           
           
@@ -241,16 +250,16 @@
     $('input:radio[name=selectedOffer]').change(function() {
       setPlantePrice();
       if (this.value == 'Achat') {
-        document.getElementById('coutLoc').style.display = "none"; 
-        document.getElementById('coutEnt').style.display = "none";
+        $('#coutLoc').hide();
+        $('#coutEnt').hide();
       }
       else if (this.value == 'AchatEtEntretien') {
-        document.getElementById('coutLoc').style.display = "none"; 
-        document.getElementById('coutEnt').style.display = "flex";
+        $('#coutLoc').hide();
+        $('#coutEnt').show();
       }
       else {
-        document.getElementById('coutLoc').style.display = "flex";
-        document.getElementById('coutEnt').style.display = "flex";  
+        $('#coutLoc').show();
+        $('#coutEnt').show();
       }
     });
 
