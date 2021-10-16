@@ -233,12 +233,12 @@
 
   const setPotPrice = () => {
     const selectedPot = $('input[name=selectedPots]:checked', '#pricingPlantes').val();
-    console.log('selectedPot', selectedPot);
     plantUnity.forEach(plant => {
       $(`#${plant}Pots`).val(
         potPrices[`${plant}`][selectedPot]
       );
-    })
+    });
+    setQty();
   };
 
   // On load, calculate plants & pots prices
@@ -259,6 +259,7 @@
       $('#coutLoc').show();
       $('#coutEnt').show();
     }
+    setQty();
   });
 
   $('input:radio[name=selectedPots]').change(function() {
