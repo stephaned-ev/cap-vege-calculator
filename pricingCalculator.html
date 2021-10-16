@@ -18,7 +18,7 @@
 <body>
   <div id="wrap">
     <!--id du formulaire  = pricingPlantes-->
-    <form action="" id="pricingPlantes" onsubmit="return false;">
+    <form id="pricingPlantes" onsubmit="return false;">
       <div class="left-boxes" style="width: 50%;">
         <div class="choice-boxes">
           <h3> ETAPE 1 - CHOISISSEZ VOTRE OFFRE : </h3>
@@ -184,6 +184,7 @@
     const setPlantePrice = () => {
       const selectedOffer = $('input[name=selectedOffer]:checked', '#pricingPlantes').val()
       console.log('SELECTED OFFER ?', selectedOffer);
+      alert('SELECTED OFFER ?', selectedOffer);
       plantUnity.forEach(plant => {
         $(`#${plant}`).val(
           plantePrices[`${plant.substring(0, plant.length - 1)}`][selectedOffer]
@@ -272,92 +273,92 @@
   function plantesPriceT() {
     
     
-    // babyPlante
-    babyPlantePots = document.getElementById('babyPlantePots').value; 
-    babyPlanteQty = document.getElementById('babyPlanteQty').value; 
+    // // babyPlante
+    // babyPlantePots = document.getElementById('babyPlantePots').value; 
+    // babyPlanteQty = document.getElementById('babyPlanteQty').value; 
+    // // babyPlanteT = parseInt(babyPlantePots) * parseInt(babyPlanteQty);
     // babyPlanteT = parseInt(babyPlantePots) * parseInt(babyPlanteQty);
-    babyPlanteT = parseInt(babyPlantePots) * parseInt(babyPlanteQty);
     
-    if(isNaN(babyPlantePots) == true) {
-      document.getElementById('babyPlantePots').style.display = "none";
-    } 
-    else {
-      document.getElementById('babyPlantePots').style.display = "block";
-    }
-    
-    
-    // teenagePlante
-    teenagePlantePots = document.getElementById('teenagePlantePots').value; 
-    teenagePlanteQty = document.getElementById('teenagePlanteQty').value; 
-    // teenagePlanteT = document.getElementById("teenagePlanteT").value = teenagePlanteU * teenagePlanteQty;
-    teenagePlanteT = parseInt(teenagePlantePots) * parseInt(teenagePlanteQty);
-    
-    // tombantePlante
-    tombantePlantePots = document.getElementById('tombantePlantePots').value; 
-    tombantePlanteQty = document.getElementById('tombantePlanteQty').value; 
-    // tombantePlanteT = document.getElementById("tombantePlanteT").value = tombantePlanteU * tombantePlanteQty;
-    tombantePlanteT = parseInt(tombantePlantePots) * parseInt(tombantePlanteQty);
-    // daddyPlante
-    daddyPlantePots = document.getElementById('daddyPlantePots').value; 
-    daddyPlanteQty = document.getElementById('daddyPlanteQty').value; 
-    // daddyPlanteT = document.getElementById("daddyPlanteT").value = daddyPlanteU * daddyPlanteQty;
-    daddyPlanteT = parseInt(daddyPlantePots) * parseInt(daddyPlanteQty); 
-    
-    //giantPlante
-    giantPlantePots = document.getElementById('giantPlantePots').value; 
-    giantPlanteQty = document.getElementById('giantPlanteQty').value; 
-    // giantPlanteT = document.getElementById("giantPlanteT").value = giantPlanteU * giantPlanteQty;
-    giantPlanteT = parseInt(giantPlantePots) * parseInt(giantPlanteQty); 
+    // if(isNaN(babyPlantePots) == true) {
+    //   document.getElementById('babyPlantePots').style.display = "none";
+    // } 
+    // else {
+    //   document.getElementById('babyPlantePots').style.display = "block";
+    // }
     
     
-    // calcul quantité total plantes 
-    var totalPlanteQ = document.getElementById('totalPlanteQty'); 
-    var totalPlanteQuantity = parseInt(babyPlanteQty) + parseInt(teenagePlanteQty) + parseInt(tombantePlanteQty) + parseInt(daddyPlanteQty) + parseInt(giantPlanteQty); 
-    totalPlanteQ.value = totalPlanteQuantity;
+    // // teenagePlante
+    // teenagePlantePots = document.getElementById('teenagePlantePots').value; 
+    // teenagePlanteQty = document.getElementById('teenagePlanteQty').value; 
+    // // teenagePlanteT = document.getElementById("teenagePlanteT").value = teenagePlanteU * teenagePlanteQty;
+    // teenagePlanteT = parseInt(teenagePlantePots) * parseInt(teenagePlanteQty);
     
-    // Calcul Cout Entretien 
-    var coutEntretienT = document.getElementById('coutEntretienT'); 
-    if (document.getElementById('offerAchatEntretien').checked || document.getElementById('offerLocation').checked){
-      var coutEntretienTotal =  parseInt(totalPlanteQuantity) + 60; 
-      coutEntretienT.value = coutEntretienTotal;
-    }
+    // // tombantePlante
+    // tombantePlantePots = document.getElementById('tombantePlantePots').value; 
+    // tombantePlanteQty = document.getElementById('tombantePlanteQty').value; 
+    // // tombantePlanteT = document.getElementById("tombantePlanteT").value = tombantePlanteU * tombantePlanteQty;
+    // tombantePlanteT = parseInt(tombantePlantePots) * parseInt(tombantePlanteQty);
+    // // daddyPlante
+    // daddyPlantePots = document.getElementById('daddyPlantePots').value; 
+    // daddyPlanteQty = document.getElementById('daddyPlanteQty').value; 
+    // // daddyPlanteT = document.getElementById("daddyPlanteT").value = daddyPlanteU * daddyPlanteQty;
+    // daddyPlanteT = parseInt(daddyPlantePots) * parseInt(daddyPlanteQty); 
     
-    // calcul pots 
-    var prixPlantesPots = document.getElementById('prixPlantesPots');
-    var prixPlantesPotsT = parseInt(babyPlanteT) + parseInt(teenagePlanteT) + parseInt(tombantePlanteT) + parseInt(daddyPlanteT) + parseInt(giantPlanteT); 
-    prixPlantesPots.value = prixPlantesPotsT; 
+    // //giantPlante
+    // giantPlantePots = document.getElementById('giantPlantePots').value; 
+    // giantPlanteQty = document.getElementById('giantPlanteQty').value; 
+    // // giantPlanteT = document.getElementById("giantPlanteT").value = giantPlanteU * giantPlanteQty;
+    // giantPlanteT = parseInt(giantPlantePots) * parseInt(giantPlanteQty); 
     
-    // calcul Cout Location 
-    var coutLocationT = document.getElementById('coutLocationT'); 
-    if (document.getElementById('offerLocation').checked) {
-      var coutLocation = prixPlantesPotsT;
-      coutLocationT.value = coutLocation; 
-    }
     
+    // // calcul quantité total plantes 
+    // var totalPlanteQ = document.getElementById('totalPlanteQty'); 
+    // var totalPlanteQuantity = parseInt(babyPlanteQty) + parseInt(teenagePlanteQty) + parseInt(tombantePlanteQty) + parseInt(daddyPlanteQty) + parseInt(giantPlanteQty); 
+    // totalPlanteQ.value = totalPlanteQuantity;
+    
+    // // Calcul Cout Entretien 
+    // var coutEntretienT = document.getElementById('coutEntretienT'); 
+    // if (document.getElementById('offerAchatEntretien').checked || document.getElementById('offerLocation').checked){
+    //   var coutEntretienTotal =  parseInt(totalPlanteQuantity) + 60; 
+    //   coutEntretienT.value = coutEntretienTotal;
+    // }
+    
+    // // calcul pots 
+    // var prixPlantesPots = document.getElementById('prixPlantesPots');
+    // var prixPlantesPotsT = parseInt(babyPlanteT) + parseInt(teenagePlanteT) + parseInt(tombantePlanteT) + parseInt(daddyPlanteT) + parseInt(giantPlanteT); 
+    // prixPlantesPots.value = prixPlantesPotsT; 
+    
+    // // calcul Cout Location 
+    // var coutLocationT = document.getElementById('coutLocationT'); 
+    // if (document.getElementById('offerLocation').checked) {
+    //   var coutLocation = prixPlantesPotsT;
+    //   coutLocationT.value = coutLocation; 
+    // }
     
     
     
-    // Calcul cout total TOTAL 
-    var livraisonInstallation = 89; 
-    if (document.getElementById('offerLocation').checked) {
-      var coutTotal = parseInt(coutEntretienTotal) + parseInt(livraisonInstallation) + parseInt(coutLocation);
-    }
-    else if (document.getElementById('offerAchatEntretien').checked) {
-      var coutTotal = parseInt(coutEntretienTotal) + parseInt(livraisonInstallation) + parseInt(prixPlantesPotsT);
-    }
-    else {
-      var coutTotal = parseInt(livraisonInstallation) + parseInt(prixPlantesPotsT);
-    };
+    
+    // // Calcul cout total TOTAL 
+    // var livraisonInstallation = 89; 
+    // if (document.getElementById('offerLocation').checked) {
+    //   var coutTotal = parseInt(coutEntretienTotal) + parseInt(livraisonInstallation) + parseInt(coutLocation);
+    // }
+    // else if (document.getElementById('offerAchatEntretien').checked) {
+    //   var coutTotal = parseInt(coutEntretienTotal) + parseInt(livraisonInstallation) + parseInt(prixPlantesPotsT);
+    // }
+    // else {
+    //   var coutTotal = parseInt(livraisonInstallation) + parseInt(prixPlantesPotsT);
+    // };
     
     
-    document.getElementById('totalPrice').innerHTML = "Prix total de "+coutTotal+" euros.";
+    // document.getElementById('totalPrice').innerHTML = "Prix total de "+coutTotal+" euros.";
     
-    if(isNaN(coutTotal) == true) {
-      document.getElementById('totalPrice').style.display = "none";
-    } 
-    else {
-      document.getElementById('totalPrice').style.display = "block";
-    }
+    // if(isNaN(coutTotal) == true) {
+    //   document.getElementById('totalPrice').style.display = "none";
+    // } 
+    // else {
+    //   document.getElementById('totalPrice').style.display = "block";
+    // }
     
     
     // calcul prix total HT 
