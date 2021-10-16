@@ -271,6 +271,7 @@
       currentTotalQty += parseInt($(el).val())
     });
     $("#totalPlanteQty").text(currentTotalQty);
+    getPrice();
   };
 
   const getPrice = () => {
