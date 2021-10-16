@@ -184,10 +184,14 @@
     const setPlantePrice = () => {
       const selectedOffer = $('input[name=selectedOffer]:checked', '#pricingPlantes').val()
       let selected = selectedOffer.toLowerCase();
-      console.log('SELECTED OFFER ?', selected);
+      // console.log('SELECTED OFFER ?', selected);
+      console.log('plantUnity', plantUnity);
 
-      alert('SELECTED OFFER ?', selectedOffer);
       plantUnity.forEach(plant => {
+        console.log('plant', plant);
+        console.log('plant.substring(0, plant.length - 1)', plant.substring(0, plant.length - 1));
+        console.log('selected', selected);
+        console.log('plantePrices[`${plant.substring(0, plant.length - 1)}`]', plantePrices[`${plant.substring(0, plant.length - 1)}`]);
         console.log('NEW VALUE :', plantePrices[`${plant.substring(0, plant.length - 1)}`][selected])
         $(`#${plant}`).val(
           plantePrices[`${plant.substring(0, plant.length - 1)}`][selected]
