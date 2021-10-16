@@ -186,23 +186,23 @@
 
     const potPrices = {
       babyPlante: {
-        cuite: 6,
+        cuit: 6,
         eco: 25,
       },
       teenagePlante: {
-        cuite: 18,
+        cuit: 18,
         eco: 25,
       },
       tombantePlante: {
-        cuite: 18,
+        cuit: 18,
         eco: 25,
       },
       daddyPlante: {
-        cuite: 32,
+        cuit: 32,
         eco: 39,
       },
       giantPlante: {
-        cuite: 69,
+        cuit: 69,
         eco: 83,
       },
     };
@@ -229,7 +229,7 @@
       console.log('selectedPot', selectedPot);
       plantUnity.forEach(plant => {
         $(`#${plant}Pots`).val(
-          plantePrices[`${plant}`][selectedPot]
+          potPrices[`${plant}`][selectedPot]
         );
       })
     };
