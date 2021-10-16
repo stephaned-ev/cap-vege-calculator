@@ -140,68 +140,90 @@
 
 <script>
     
-  // Variables prix plantesU
-  const prices = {
-    babyPlante: {
-      achat: 8,
-      achatEntretien: 8,
-      location: 1,
-    },
-    teenagePlante: {
-      achat: 30,
-      achatEntretien: 30,
-      location: 3,
-    },
-    tombantePlante: {
-      achat: 35,
-      achatEntretien: 35,
-      location: 4,
-    },
-    daddyPlante: {
-      achat: 60,
-      achatEntretien: 60,
-      location: 5,
-    },
-    giantPlante: {
-      achat: 120,
-      achatEntretien: 120,
-      location: 12,
-    },
-  };
+  
   
   // Choix Offres => prix plantesU
   $(document).ready(function() {
+      // Variables prix plantesU
+    const plantePrices = {
+      babyPlante: {
+        achat: 8,
+        achatEntretien: 8,
+        location: 1,
+      },
+      teenagePlante: {
+        achat: 30,
+        achatEntretien: 30,
+        location: 3,
+      },
+      tombantePlante: {
+        achat: 35,
+        achatEntretien: 35,
+        location: 4,
+      },
+      daddyPlante: {
+        achat: 60,
+        achatEntretien: 60,
+        location: 5,
+      },
+      giantPlante: {
+        achat: 120,
+        achatEntretien: 120,
+        location: 12,
+      },
+    };
+
+    const plantUnity = [
+      "babyPlanteU",
+      "teenagePlanteU",
+      "tombantePlanteU",
+      "daddyPlanteU",
+      "giantPlanteU",
+    ];
+
+    const setPlantePrice = () => {
+      const selectedOffer = $('input[name=selectedOffer]:checked', '#pricingPlantes').val()
+      console.log('SELECTED OFFER ?', selectedOffer);
+      plantUnity.forEach(plant => {
+        $(`#${plant}`).val(
+          plantePrices[`${plant.substring(0, plant.length - 1)}`][selectedOffer]
+        );
+      })
+    };
+
+    setPlantePrice();
+
     $('input:radio[name=selectedOffer]').change(function() {
-      
-      if (this.value == 'Achat') {
+      setPlantePrice();
+      // if (this.value == 'Achat') {
         
-        // document.getElementById('babyPlanteU').value = babyPlantePriceU["Achat"];
-        // document.getElementById('teenagePlanteU').value = teenagePlantePriceU["Achat"];
-        // document.getElementById('tombantePlanteU').value = tombantePlantePriceU["Achat"];
-        // document.getElementById('daddyPlanteU').value = daddyPlantePriceU["Achat"];
-        // document.getElementById('giantPlanteU').value = giantPlantePriceU["Achat"]; 
-        // document.getElementById('coutLoc').style.display = "none"; 
-        // document.getElementById('coutEnt').style.display = "none";
-      }
-      else if (this.value == 'AchatEtEntretien') {
-        document.getElementById('babyPlanteU').value = babyPlantePriceU["AchatEtEntretien"];
-        document.getElementById('teenagePlanteU').value = teenagePlantePriceU["AchatEtEntretien"];
-        document.getElementById('tombantePlanteU').value = tombantePlantePriceU["AchatEtEntretien"];
-        document.getElementById('daddyPlanteU').value = daddyPlantePriceU["AchatEtEntretien"];
-        document.getElementById('giantPlanteU').value = giantPlantePriceU["AchatEtEntretien"]; 
-        document.getElementById('coutLoc').style.display = "none"; 
-        document.getElementById('coutEnt').style.display = "flex";
-      }
-      else {
-        document.getElementById('babyPlanteU').value = babyPlantePriceU["Location"];
-        document.getElementById('teenagePlanteU').value = teenagePlantePriceU["Location"];
-        document.getElementById('tombantePlanteU').value = tombantePlantePriceU["Location"];
-        document.getElementById('daddyPlanteU').value = daddyPlantePriceU["Location"];
-        document.getElementById('giantPlanteU').value = giantPlantePriceU["Location"];  
-        document.getElementById('coutPlantes').style.display = "none"; 
-        document.getElementById('coutLoc').style.display = "flex";
-        document.getElementById('coutEnt').style.display = "flex";  
-      }
+      //   // document.getElementById('babyPlanteU').value = babyPlantePriceU["Achat"];
+      //   // document.getElementById('teenagePlanteU').value = teenagePlantePriceU["Achat"];
+      //   // document.getElementById('tombantePlanteU').value = tombantePlantePriceU["Achat"];
+      //   // document.getElementById('daddyPlanteU').value = daddyPlantePriceU["Achat"];
+      //   // document.getElementById('giantPlanteU').value = giantPlantePriceU["Achat"]; 
+      //   // document.getElementById('coutLoc').style.display = "none"; 
+      //   // document.getElementById('coutEnt').style.display = "none";
+      // }
+      // else if (this.value == 'AchatEtEntretien') {
+      //   document.getElementById('babyPlanteU').value = babyPlantePriceU["AchatEtEntretien"];
+      //   document.getElementById('teenagePlanteU').value = teenagePlantePriceU["AchatEtEntretien"];
+      //   document.getElementById('tombantePlanteU').value = tombantePlantePriceU["AchatEtEntretien"];
+      //   document.getElementById('daddyPlanteU').value = daddyPlantePriceU["AchatEtEntretien"];
+      //   document.getElementById('giantPlanteU').value = giantPlantePriceU["AchatEtEntretien"]; 
+      //   document.getElementById('coutLoc').style.display = "none"; 
+      //   document.getElementById('coutEnt').style.display = "flex";
+      // }
+      // else {
+      //   document.getElementById('babyPlanteU').value = babyPlantePriceU["Location"];
+      //   document.getElementById('teenagePlanteU').value = teenagePlantePriceU["Location"];
+      //   document.getElementById('tombantePlanteU').value = tombantePlantePriceU["Location"];
+      //   document.getElementById('daddyPlanteU').value = daddyPlantePriceU["Location"];
+      //   document.getElementById('giantPlanteU').value = giantPlantePriceU["Location"];  
+      //   document.getElementById('coutPlantes').style.display = "none"; 
+      //   document.getElementById('coutLoc').style.display = "flex";
+      //   document.getElementById('coutEnt').style.display = "flex";  
+      // }
     });
   });
   
