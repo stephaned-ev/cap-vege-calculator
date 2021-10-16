@@ -276,7 +276,9 @@
   }
 
   $('.changeQty').on("click", () => {
-    setQty();
+    setTimeout(() => {
+      setQty();
+    }, 250);
   });
 
   $('[name="quantity"]').on("input", () => {
