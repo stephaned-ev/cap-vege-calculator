@@ -187,7 +187,7 @@
       alert('SELECTED OFFER ?', selectedOffer);
       plantUnity.forEach(plant => {
         $(`#${plant}`).val(
-          plantePrices[`${plant.substring(0, plant.length - 1)}`][selectedOffer]
+          plantePrices[`${plant.substring(0, plant.length - 1)}`][selectedOffer.toLowerCase()]
         );
       })
     };
